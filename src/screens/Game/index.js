@@ -3,6 +3,7 @@ import React from 'react';
 import styles from './style';
 
 import avlOptions from './../../assets/options/avl'
+import { generateTree } from './../../objects/tree';
 
 export default class Game extends React.Component {
 
@@ -22,6 +23,9 @@ export default class Game extends React.Component {
         this.setState({
             options : options
         })
+
+        let tree = generateTree('rightSimple');
+        console.log(tree);
     }
 
     render() {
