@@ -5,7 +5,7 @@ import styles from './style';
 
 class Menu extends React.Component {
     state = {
-        selected: null,
+        selected: 'AVL',
     }
     
     select(option) {

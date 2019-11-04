@@ -15,6 +15,19 @@ const style = {
         height: '100%',
         float: 'right',
     },
+    button : {
+        background: 'blue',
+        margin: '30px',
+        width: '400px',
+        padding: '15px',
+        color: 'white',
+        borderRadius: '5px',
+        textAlign: 'center',
+    },
+    optionImg : {
+        height: '120px',
+        marginTop: '15px'
+    }
 }
 
 export default style;

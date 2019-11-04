@@ -2,7 +2,28 @@ import React from 'react';
 
 import styles from './style';
 
+import avlOptions from './../../assets/options/avl'
+
 export default class Game extends React.Component {
+
+    state = {
+        options: [],
+    }
+
+    componentDidMount() {
+        let options = [];
+        switch (this.props.mode) {
+            case 'AVL':
+                options = avlOptions;
+                break;
+            default:
+                break;
+        }
+        this.setState({
+            options : options
+        })
+    }
+
     render() {
         return (
             <div style={styles.container}>
@@ -13,6 +34,21 @@ export default class Game extends React.Component {
                     <h1>
                         Qual é a opção correta?
                     </h1>
+                    {this.state.options.map((value, id) => {
+                        return (
+                            <div
+                                style={styles.button}
+                                key={'option_' + id}
+                            >
+                                <span>{value.name}</span>
+                                <br/>
+                                <img
+                                    style={styles.optionImg}
+                                    src={value.img}
+                                />
+                            </div>
+                        )
+                    })}
                 </div>
             </div>
         )
