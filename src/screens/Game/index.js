@@ -4,11 +4,13 @@ import styles from './style';
 
 import avlOptions from './../../assets/options/avl'
 import { generateTree } from './../../objects/tree';
+import TreeNode from './../../components/TreeNode';
 
 export default class Game extends React.Component {
 
     state = {
         options: [],
+        tree: null,
     }
 
     componentDidMount() {
@@ -20,11 +22,13 @@ export default class Game extends React.Component {
             default:
                 break;
         }
+        
+        let tree = generateTree('rightSimple');
         this.setState({
-            options : options
+            options : options,
+            tree: tree,
         })
 
-        let tree = generateTree('rightSimple');
         console.log(tree);
     }
 
@@ -32,7 +36,7 @@ export default class Game extends React.Component {
         return (
             <div style={styles.container}>
                 <div style={styles.left}>
-
+                    <TreeNode tree={this.state.tree}/>
                 </div>
                 <div style={styles.right}>
                     <h1>

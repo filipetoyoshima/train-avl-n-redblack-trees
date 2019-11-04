@@ -32,7 +32,6 @@ export function generateTree(type) {
     switch (type) {
         case 'rightSimple':
             return rightSimpleTree();
-            break;
         case 'leftSimple':
             break;
         case 'middleRightRight':
