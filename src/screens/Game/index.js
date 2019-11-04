@@ -23,7 +23,7 @@ export default class Game extends React.Component {
                 break;
         }
         
-        let tree = generateTree('rightSimple');
+        let tree = generateTree('randomTest');
         this.setState({
             options : options,
             tree: tree,

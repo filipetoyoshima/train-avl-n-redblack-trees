@@ -5,10 +5,6 @@ import styles from './style';
 
 export default class TreeNode extends React.Component {
 
-    componentDidMount() {
-        console.log(this.props.tree, "tree");
-    }
-
     renderIfExists(node) {
         if (node !== null) return (
             <TreeNode tree={node}/>
@@ -21,7 +17,14 @@ export default class TreeNode extends React.Component {
     render() {
         let node = this.props.tree;
         
-        if(!node) return <></>;
+        if(!node) return (
+            <div
+                style={{
+                    ...styles.child,
+                    height: '120px',
+                }}
+            />
+        )
 
         return(
             <>
@@ -29,9 +32,11 @@ export default class TreeNode extends React.Component {
                 <div style={styles.node}>
                     {node.value}
                 </div>
-                <div>
-                    {this.renderIfExists(node.right)}
-                    {this.renderIfExists(node.left)}
+                <div style={styles.child}>
+                    <TreeNode tree={node.left}/>
+                </div>
+                <div style={styles.child}>
+                    <TreeNode tree={node.right}/>
                 </div>
             </div>
             </>

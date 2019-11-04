@@ -41,7 +41,9 @@ export function generateTree(type) {
         case 'middleLeftRight':
             break;
         case 'middleLeftLeft':
-            break
+            break;
+        case 'randomTest':
+            return randomTest();
         default:
             break;
     }
@@ -63,3 +65,28 @@ function rightSimpleTree() {
     let tree = addArray(null, arr);
     return tree;
 }
+
+function randomTest() {
+    let arr = generateArray(8);
+    let tree = addArray(null, shuffle(arr));
+    return tree;
+}
+
+function shuffle(array) {
+    var currentIndex = array.length, temporaryValue, randomIndex;
+  
+    // While there remain elements to shuffle...
+    while (0 !== currentIndex) {
+  
+      // Pick a remaining element...
+      randomIndex = Math.floor(Math.random() * currentIndex);
+      currentIndex -= 1;
+  
+      // And swap it with the current element.
+      temporaryValue = array[currentIndex];
+      array[currentIndex] = array[randomIndex];
+      array[randomIndex] = temporaryValue;
+    }
+  
+    return array;
+  }
