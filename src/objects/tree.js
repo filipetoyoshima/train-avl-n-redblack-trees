@@ -63,6 +63,15 @@ export function generateTree(type) {
     return createTreeWithOrder(order);
 }
 
+export const avlTypes = [
+    'doubleRight',
+    'middleRightRight',
+    'middleRightLeft',
+    'doubleLeft',
+    'middleLeftRight',
+    'middleLeftLeft',
+]
+
 function generateArray(quantity) {
     let number = Math.floor(Math.random() * 10) + 1;
     let arr = [number];
