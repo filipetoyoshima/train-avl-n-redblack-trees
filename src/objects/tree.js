@@ -1,4 +1,4 @@
-export function newTree(value, color='blue') {
+export function newTree(value, color = 'blue') {
     return {
         value: value,
         color: color,
@@ -7,7 +7,7 @@ export function newTree(value, color='blue') {
     }
 }
 
-function addNode(tree, value, color='blue') {
+function addNode(tree, value, color = 'blue') {
     if (tree === null) {
         return newTree(value, color);
     } else if (value >= tree.value) {
@@ -21,7 +21,7 @@ function addNode(tree, value, color='blue') {
 
 function addArray(tree, arr) {
     console.log(arr.length);
-    for (let i=0; i<arr.length; i++) {
+    for (let i = 0; i < arr.length; i++) {
         console.log(arr[i], 'adding node')
         tree = addNode(tree, arr[i]);
     }
@@ -52,8 +52,8 @@ export function generateTree(type) {
 function generateArray(quantity) {
     let number = Math.floor(Math.random() * 10) + 1;
     let arr = [number];
-    for (let i=1; i<quantity; i++) {
-        number = Math.floor(Math.random() * 10) + 1 + arr[i-1];
+    for (let i = 1; i < quantity; i++) {
+        number = Math.floor(Math.random() * 10) + 1 + arr[i - 1];
         arr.push(number);
     }
     return arr;
@@ -73,20 +73,22 @@ function randomTest() {
 }
 
 function shuffle(array) {
+
     var currentIndex = array.length, temporaryValue, randomIndex;
-  
+
     // While there remain elements to shuffle...
     while (0 !== currentIndex) {
-  
-      // Pick a remaining element...
-      randomIndex = Math.floor(Math.random() * currentIndex);
-      currentIndex -= 1;
-  
-      // And swap it with the current element.
-      temporaryValue = array[currentIndex];
-      array[currentIndex] = array[randomIndex];
-      array[randomIndex] = temporaryValue;
+
+        // Pick a remaining element...
+        randomIndex = Math.floor(Math.random() * currentIndex);
+        currentIndex -= 1;
+
+        // And swap it with the current element.
+        temporaryValue = array[currentIndex];
+        array[currentIndex] = array[randomIndex];
+        array[randomIndex] = temporaryValue;
     }
-  
+
+
     return array;
-  }
+}

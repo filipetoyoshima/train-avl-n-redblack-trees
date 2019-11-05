@@ -20,6 +20,8 @@ const style = {
         lineHeight: '60px',
         fontSize: '18px',
         fontWeight: 'bold',
+        zIndex: 100,
+        position: 'relative'
     }
 }
 

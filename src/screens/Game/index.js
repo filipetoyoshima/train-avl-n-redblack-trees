@@ -5,6 +5,8 @@ import styles from './style';
 import avlOptions from './../../assets/options/avl'
 import { generateTree } from './../../objects/tree';
 import TreeNode from './../../components/TreeNode';
+import LineTo from 'react-lineto';
+
 
 export default class Game extends React.Component {
 
@@ -22,24 +24,27 @@ export default class Game extends React.Component {
             default:
                 break;
         }
-        
+
         let tree = generateTree('randomTest');
         this.setState({
-            options : options,
+            options: options,
             tree: tree,
         })
 
-        console.log(tree);
+        console.log(tree, 'tree');
     }
 
     render() {
+        {
+            console.log(this.state.tree);
+        }
         return (
             <div style={styles.container}>
                 <div style={styles.left}>
-                    <TreeNode tree={this.state.tree}/>
+                    <TreeNode tree={this.state.tree} depth={0} title={"Root"}/>
                 </div>
                 <div style={styles.right}>
-                    <h1>
+                    <h1 >
                         Qual é a opção correta?
                     </h1>
                     {this.state.options.map((value, id) => {
@@ -49,7 +54,7 @@ export default class Game extends React.Component {
                                 key={'option_' + id}
                             >
                                 <span>{value.name}</span>
-                                <br/>
+                                <br />
                                 <img
                                     style={styles.optionImg}
                                     src={value.img}
