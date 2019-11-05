@@ -3,9 +3,8 @@ import React from 'react';
 import styles from './style';
 
 import avlOptions from './../../assets/options/avl'
-import { generateTree } from './../../objects/tree';
+import { generateTree, avlTypes } from './../../objects/tree';
 import TreeNode from './../../components/TreeNode';
-import LineTo from 'react-lineto';
 
 
 export default class Game extends React.Component {
@@ -17,15 +16,22 @@ export default class Game extends React.Component {
 
     componentDidMount() {
         let options = [];
+        let types = [];
         switch (this.props.mode) {
             case 'AVL':
                 options = avlOptions;
+                types = avlTypes;
+                break;
+            case 'RedBlack':
+                // cry
                 break;
             default:
                 break;
         }
+        
+        let pickedType = types[Math.floor(Math.random() * types.length)];
 
-        let tree = generateTree('randomTest');
+        let tree = generateTree(pickedType);
         this.setState({
             options: options,
             tree: tree,
@@ -35,9 +41,6 @@ export default class Game extends React.Component {
     }
 
     render() {
-        {
-            console.log(this.state.tree);
-        }
         return (
             <div style={styles.container}>
                 <div style={styles.left}>
@@ -58,6 +61,7 @@ export default class Game extends React.Component {
                                 <img
                                     style={styles.optionImg}
                                     src={value.img}
+                                    alt="img"
                                 />
                             </div>
                         )
