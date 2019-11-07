@@ -11,6 +11,7 @@ export default class Game extends React.Component {
 
     state = {
         options: [],
+        solution: '',
         tree: null,
     }
 
@@ -31,13 +32,22 @@ export default class Game extends React.Component {
         
         let pickedType = types[Math.floor(Math.random() * types.length)];
 
-        let tree = generateTree(pickedType);
+        let tree = generateTree(pickedType.problem);
         this.setState({
             options: options,
+            solution: pickedType.solution,
             tree: tree,
         })
 
         console.log(tree, 'tree');
+    }
+
+    checkAnswer(answer) {
+        if (answer === this.state.solution) {
+            console.log('RESPOSTA CERTA');
+        } else {
+            console.log('RESPOSTA ERRADA');
+        }
     }
 
     render() {
@@ -54,6 +64,7 @@ export default class Game extends React.Component {
                         return (
                             <div
                                 style={styles.button}
+                                onClick={() => this.checkAnswer(value.code)}
                                 key={'option_' + id}
                             >
                                 <span>{value.name}</span>

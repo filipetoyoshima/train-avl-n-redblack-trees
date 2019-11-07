@@ -86,12 +86,30 @@ export function generateTree(type) {
 }
 
 export const avlTypes = [
-    'doubleRight',
-    'middleRightRight',
-    'middleRightLeft',
-    'doubleLeft',
-    'middleLeftRight',
-    'middleLeftLeft',
+    {
+        problem: 'doubleRight',
+        solution: 'simpleRight'
+    },
+    {
+        problem: 'middleRightRight',
+        solution: 'doubleRight'
+    },
+    {
+        problem: 'middleRightLeft',
+        solution: 'doubleRight'
+    },
+    {
+        problem: 'doubleLeft',
+        solution: 'simpleLeft'
+    },
+    {
+        problem: 'middleLeftRight',
+        solution: 'doubleLeft'
+    },
+    {
+        problem: 'middleLeftLeft',
+        solution: 'doubleLeft'
+    },
 ]
 
 function generateArray(quantity) {

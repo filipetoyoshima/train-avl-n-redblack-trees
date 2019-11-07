@@ -6,18 +6,22 @@ import middleLeft from './../images/middleLeft.png'
 const options = [
     {
         name: 'Rotação Simples Direita',
+        code: 'simpleRight',
         img: simpleRight,
     },
     {
         name: 'Rotação Simples Esquerda',
+        code: 'simpleLeft',
         img: simpleLeft,
     },
     {
         name: 'Rotação Dupla Direita',
+        code: 'doubleRight',
         img: middleRight,
     },
     {
         name: 'Rotação Dupla Esquerda',
+        code: 'doubleLeft',
         img: middleLeft,
     },
 ]
