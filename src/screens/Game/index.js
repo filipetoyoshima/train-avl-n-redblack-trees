@@ -31,6 +31,13 @@ export default class Game extends React.Component {
         }
         
         let pickedType = types[Math.floor(Math.random() * types.length)];
+        options = options.map((option) => {
+            return {
+                ...option,
+                isAnswer: option.code === pickedType.solution,
+                isSelected: false,
+            }
+        })
 
         let tree = generateTree(pickedType.problem);
         this.setState({
@@ -38,12 +45,31 @@ export default class Game extends React.Component {
             solution: pickedType.solution,
             tree: tree,
         })
-
-        console.log(tree, 'tree');
     }
 
-    checkAnswer(answer) {
-        if (answer === this.state.solution) {
+    getButtonColor(option) {
+        let btnColor = 'blue';
+
+        if (option.isSelected) {
+            if (option.isAnswer) {
+                btnColor = 'green';
+            } else {
+                btnColor = 'red';
+            }
+        }
+
+        return btnColor;
+    }
+
+    checkAnswer(id) {
+        let options = this.state.options;
+        options[id].isSelected = true;
+
+        this.setState({
+            options: options,
+        })
+
+        if (options[id].code === this.state.solution) {
             console.log('RESPOSTA CERTA');
         } else {
             console.log('RESPOSTA ERRADA');
@@ -63,8 +89,11 @@ export default class Game extends React.Component {
                     {this.state.options.map((value, id) => {
                         return (
                             <div
-                                style={styles.button}
-                                onClick={() => this.checkAnswer(value.code)}
+                                style={{
+                                    ...styles.button,
+                                    background: this.getButtonColor(value),
+                                }}
+                                onClick={() => this.checkAnswer(id)}
                                 key={'option_' + id}
                             >
                                 <span>{value.name}</span>
