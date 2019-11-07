@@ -1,35 +1,57 @@
-export function newTree(value, color = 'blue') {
+export function newTree(node) {
+    // node object should have {
+    //     value: int,
+    //     color: string,
+    //     isNew: bool,
+    // }
     return {
-        value: value,
-        color: color,
+        ...node,
         left: null,
         right: null,
     }
 }
 
-function addNode(tree, value, color = 'blue') {
+function arrOfNodes(arr) {
+    let nodes = arr.map((value) => {
+        return {
+            value: value,
+            color: 'blue',
+            isNew: false,
+        }
+    })
+    return nodes;
+}
+
+function addNode(tree, node) { 
     if (tree === null) {
-        return newTree(value, color);
-    } else if (value >= tree.value) {
-        tree.right = addNode(tree.right, value, color);
+        return newTree(node);
+    } else if (node.value >= tree.value) {
+        tree.right = addNode(tree.right, node);
         return tree;
     } else {
-        tree.left = addNode(tree.left, value, color);
+        tree.left = addNode(tree.left, node);
         return tree;
     }
 }
 
 function addArray(tree, arr) {
-    for (let i=0; i<arr.length; i++) {
+    for (let i=0; i<arr.length-1; i++) {
         tree = addNode(tree, arr[i]);
+    }
+    if (arr[arr.length-1] !== null) {
+        let lastNode = {
+            ...arr[arr.length-1],
+            isNew: true,
+        }
+        console.log(lastNode);
+        tree = addNode(tree, lastNode);
     }
     return tree;
 }
 
 export function generateTree(type) {
     let order = [1]; 
-    switch (type) {
-        
+    switch (type) {       
         case 'doubleRight':
             order = [1, 0, 3, 2, 4, 5];
             break;
@@ -85,7 +107,8 @@ function generateArray(quantity) {
 function createTreeWithOrder(order) {
     let arr = generateArray(order.length);
     arr = reorderArray(arr, order);
-    let tree = addArray(null, arr);
+    let nodes = arrOfNodes(arr);
+    let tree = addArray(null, nodes);
     return tree;
 }
 

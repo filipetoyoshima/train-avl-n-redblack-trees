@@ -49,10 +49,23 @@ export default class TreeNode extends React.Component {
             />
         )
 
+        let nodeStyle = {
+            ...styles.node,
+            background: node.color,
+        };
+        if (node.isNew) {
+            nodeStyle = {
+                ...nodeStyle,
+                borderWidth: '3px',
+                borderStyle: 'dashed',
+                borderColor: 'white',
+            }
+        }
+
         return (
             <>
                 <div style={styles.container} className={this.props.title}>
-                    <div style={styles.node}>
+                    <div style={nodeStyle}>
                         {node.value}
                     </div>
                     <div style={styles.child}>
