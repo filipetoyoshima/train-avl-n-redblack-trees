@@ -1,21 +1,24 @@
-import imageFile from './../images/tree.jpg'
+import simpleRight from './../images/simpleRight.png'
+import simpleLeft from './../images/simpleLeft.png'
+import middleRight from './../images/middleRight.png'
+import middleLeft from './../images/middleLeft.png'
 
 const options = [
     {
         name: 'Rotação Simples Direita',
-        img: imageFile,
+        img: simpleRight,
     },
     {
         name: 'Rotação Simples Esquerda',
-        img: imageFile,
+        img: simpleLeft,
     },
     {
         name: 'Rotação Dupla Direita',
-        img: imageFile,
+        img: middleRight,
     },
     {
         name: 'Rotação Dupla Esquerda',
-        img: imageFile,
+        img: middleLeft,
     },
 ]
 
