@@ -14,6 +14,7 @@ export default class Game extends React.Component {
         options: [],
         solution: '',
         tree: null,
+        hasFinished: false,
     }
 
     componentDidMount() {
@@ -45,6 +46,7 @@ export default class Game extends React.Component {
             options: options,
             solution: pickedType.solution,
             tree: tree,
+            hasFinished: false,
         })
     }
 
@@ -71,9 +73,9 @@ export default class Game extends React.Component {
         })
 
         if (options[id].code === this.state.solution) {
-            console.log('RESPOSTA CERTA');
-        } else {
-            console.log('RESPOSTA ERRADA');
+            this.setState({
+                hasFinished: true,
+            })
         }
     }
 
@@ -122,6 +124,22 @@ export default class Game extends React.Component {
                             </>
                         )
                     })}
+                    {this.state.hasFinished ?
+                        <div
+                            style={{
+                                ...styles.button,
+                                background: 'purple',
+                            }}
+                            onClick={() => this.componentDidMount()}
+                        >
+                            <div style={styles.reflect}/>
+                            <div style={styles.buttonLabel}>
+                                <span>De Novo</span>
+                            </div>
+                        </div>
+                    :
+                        <></>
+                    }
                 </div>
             </div>
         )
