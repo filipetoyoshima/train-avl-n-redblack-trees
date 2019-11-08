@@ -16,29 +16,40 @@ export default class TreeNode extends React.Component {
 
     generateClassName = (depth, side, node) => {
 
-        let value = side === "left" ? (node.left ? node.left.value : "null") : (node.right ? node.right.value : "null");
+        let value = side === "left" ?
+            (node.left ? node.left.value : "null")
+        : 
+            (node.right ? node.right.value : "null");
 
         return depth + side + value;
     }
 
     drawLine = (from, to, node) => {
 
-        console.log(node.left !== null || node.right !== null, "aa", from, to);
+        // console.log(node.left !== null || node.right !== null, "aa", from, to);
         return (
 
             node.left !== null || node.right !== null ?
 
-                <LineTo from={from} to={to} delay={true} borderColor='black' borderStyle='solid' borderWidth={3}/>
+                <LineTo
+                    from={from}
+                    to={to}
+                    delay={true}
+                    borderColor='black'
+                    borderStyle='solid'
+                    borderWidth={3}
+                />
                 :
-                console.log("porr")
+                <></>
+                // console.log("porr")
         )
     }
 
     render() {
         let node = this.props.tree;
-        if (node) {
-            console.log(this.props.depth, this.props.title, node.value);
-        }
+        // if (node) {
+        //     console.log(this.props.depth, this.props.title, node.value);
+        // }
 
         if (!node) return (
             <div
@@ -69,16 +80,28 @@ export default class TreeNode extends React.Component {
                         {node.value}
                     </div>
                     <div style={styles.child}>
-                        <TreeNode tree={node.left} depth={this.props.depth + 1} title={this.generateClassName(this.props.depth + 1, "left", node)} />
-                        {
-                            this.drawLine(this.props.title, this.generateClassName(this.props.depth + 1, "left", node), node)
-                        }
+                        <TreeNode
+                            tree={node.left}
+                            depth={this.props.depth + 1}
+                            title={this.generateClassName(this.props.depth + 1, "left", node)}
+                        />
+                        {this.drawLine(
+                            this.props.title,
+                            this.generateClassName(this.props.depth + 1, "left", node),
+                            node
+                        )}
                     </div>
                     <div style={styles.child}>
-                        <TreeNode tree={node.right} depth={this.props.depth + 1} title={this.generateClassName(this.props.depth + 1, "right", node)} />
-                        {
-                            this.drawLine(this.props.title, this.generateClassName(this.props.depth + 1, "right", node), node)
-                        }
+                        <TreeNode
+                            tree={node.right}
+                            depth={this.props.depth + 1}
+                            title={this.generateClassName(this.props.depth + 1, "right", node)}
+                        />
+                        {this.drawLine(
+                            this.props.title,
+                            this.generateClassName(this.props.depth + 1, "right", node),
+                            node
+                        )}
                     </div>
                 </div>
             </>
