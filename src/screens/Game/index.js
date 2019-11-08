@@ -103,8 +103,10 @@ export default class Game extends React.Component {
                                 data-for={'option_' + id}
                                 data-tip=''
                             >
-                                <span>{value.name}</span>
-                                <br />
+                                <div style={styles.reflect}/>
+                                <div style={styles.buttonLabel}>
+                                    <span>{value.name}</span>
+                                </div>
                             </div>
                             <ReactTooltip
                                 id={'option_' + id}
