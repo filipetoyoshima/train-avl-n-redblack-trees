@@ -6,6 +6,7 @@ import avlOptions from './../../assets/options/avl'
 import { generateTree, avlTypes } from './../../objects/tree';
 import TreeNode from './../../components/TreeNode';
 
+import ReactTooltip from 'react-tooltip';
 
 export default class Game extends React.Component {
 
@@ -83,11 +84,15 @@ export default class Game extends React.Component {
                     <TreeNode tree={this.state.tree} depth={0} title={"Root"}/>
                 </div>
                 <div style={styles.right}>
-                    <h1 >
+                    <h1 data-for='example'>
                         Qual é a opção correta?
                     </h1>
+                    <ReactTooltip id='example'>
+                        <p>Oi!</p>
+                    </ReactTooltip>
                     {this.state.options.map((value, id) => {
                         return (
+                            <>
                             <div
                                 style={{
                                     ...styles.button,
@@ -95,15 +100,24 @@ export default class Game extends React.Component {
                                 }}
                                 onClick={() => this.checkAnswer(id)}
                                 key={'option_' + id}
+                                data-for={'option_' + id}
+                                data-tip=''
                             >
                                 <span>{value.name}</span>
                                 <br />
+                            </div>
+                            <ReactTooltip
+                                id={'option_' + id}
+                                effect='solid'
+                                place='left'
+                            >
                                 <img
                                     style={styles.optionImg}
                                     src={value.img}
                                     alt="img"
                                 />
-                            </div>
+                            </ReactTooltip>
+                            </>
                         )
                     })}
                 </div>

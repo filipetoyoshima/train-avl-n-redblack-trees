@@ -25,7 +25,7 @@ const style = {
         textAlign: 'center',
     },
     optionImg : {
-        height: '140px',
+        height: '190px',
         marginTop: '15px'
     }
 }
