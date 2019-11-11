@@ -1,5 +1,6 @@
 import React from 'react';
 import Game from './../Game';
+import Button from './../../components/Button';
 
 import styles from './style';
 
@@ -21,22 +22,14 @@ class Menu extends React.Component {
                     <h1 style={styles.title}>
                         O que quer treinar?
                     </h1>
-                    <div
-                        style={styles.button}
-                        onClick={() => {this.select('AVL')}}
-                    >
-                        <span style={styles.buttonText}>
-                            Árvores AVL
-                        </span>
-                    </div>
-                    <div
-                        style={styles.button}
-                        onClick={() => {this.select('RedBlack')}}
-                    >
-                        <span style={styles.buttonText}>
-                            Árvores Vermelha e Preta
-                        </span>
-                    </div>
+                    <Button
+                        action={() => this.select('AVL')}
+                        text='Árvores AVL'
+                    />
+                    <Button
+                        action={() => this.select('RedBlack')}
+                        text='Árvores Vermelha e Preta'
+                    />
                 </div>
             )
         }
