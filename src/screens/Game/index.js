@@ -124,6 +124,20 @@ export default class Game extends React.Component {
                             </>
                         )
                     })}
+
+                    <div
+                        style={{
+                            ...styles.button,
+                            background: 'black',
+                        }}
+                        onClick={this.props.back}
+                    >
+                        <div style={styles.reflect}/>
+                        <div style={styles.buttonLabel}>
+                            <span>Voltar ao Menu</span>
+                        </div>
+                    </div>
+
                     {this.state.hasFinished ?
                         <div
                             style={{

@@ -5,7 +5,7 @@ import styles from './style';
 
 class Menu extends React.Component {
     state = {
-        selected: 'RedBlack',
+        selected: null,
     }
     
     select(option) {
@@ -41,7 +41,10 @@ class Menu extends React.Component {
             )
         }
         return (
-            <Game mode={this.state.selected}/>
+            <Game
+                mode={this.state.selected}
+                back={() => this.select(null)}    
+            />
         )
     }
 }
