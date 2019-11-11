@@ -5,7 +5,9 @@ import styles from './style';
 import avlOptions from './../../assets/options/avl';
 import redBlackOptions from './../../assets/options/redBlack';
 import { generateTree, avlTypes, RBTypes } from './../../objects/tree';
+
 import TreeNode from './../../components/TreeNode';
+import Button from './../../components/Button';
 
 import ReactTooltip from 'react-tooltip';
 
@@ -96,19 +98,15 @@ export default class Game extends React.Component {
                         return (
                             <>
                             <div
-                                style={{
-                                    ...styles.button,
-                                    background: this.getButtonColor(value),
-                                }}
-                                onClick={() => this.checkAnswer(id)}
                                 key={'option_' + id}
                                 data-for={'option_' + id}
                                 data-tip=''
                             >
-                                <div style={styles.reflect}/>
-                                <div style={styles.buttonLabel}>
-                                    <span>{value.name}</span>
-                                </div>
+                                <Button
+                                    color={this.getButtonColor(value)}
+                                    action={() => this.checkAnswer(id)}
+                                    text={value.name}
+                                />
                             </div>
                             <ReactTooltip
                                 id={'option_' + id}
@@ -124,33 +122,19 @@ export default class Game extends React.Component {
                             </>
                         )
                     })}
-
-                    <div
-                        style={{
-                            ...styles.button,
-                            background: 'black',
-                        }}
-                        onClick={this.props.back}
-                    >
-                        <div style={styles.reflect}/>
-                        <div style={styles.buttonLabel}>
-                            <span>Voltar ao Menu</span>
-                        </div>
-                    </div>
+                    
+                    <Button
+                        color='black'
+                        action={this.props.back}
+                        text='Voltar ao Menu'
+                    />
 
                     {this.state.hasFinished ?
-                        <div
-                            style={{
-                                ...styles.button,
-                                background: 'purple',
-                            }}
-                            onClick={() => this.componentDidMount()}
-                        >
-                            <div style={styles.reflect}/>
-                            <div style={styles.buttonLabel}>
-                                <span>De Novo</span>
-                            </div>
-                        </div>
+                        <Button
+                            color='purple'
+                            action={() => this.componentDidMount()}
+                            text='De Novo'
+                        />
                     :
                         <></>
                     }
