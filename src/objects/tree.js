@@ -101,13 +101,82 @@ export function generateTree(type) {
     
     } else {
         switch (type) {
-            case 'RB-1A':
+            case 'RB-3A':
                 order = [
                     [2, 'black'],
                     [3, 'red'],
                     [1, 'red'],
                     [0, 'red'],
                 ];
+                break;
+            
+            case 'RB-3B':
+                order = [
+                    [1, 'black'],
+                    [0, 'red'],
+                    [2, 'red'],
+                    [3, 'red'],
+                ];
+                break;
+
+            case 'RB-4A':
+                order = [
+                    [1, 'black'],
+                    [4, 'black'],
+                    [0, 'black'],
+                    [2, 'red'],
+                    [3, 'red'],
+                ];
+                break;
+
+            case 'RB-4B':
+                order = [
+                    [1, 'black'],
+                    [0, 'black'],
+                    [2, 'black'],
+                    [4, 'red'],
+                    [3, 'red'],
+                ];
+                break;
+
+            case 'RB-4C':
+                order = [
+                    [3, 'black'],
+                    [4, 'black'],
+                    [0, 'black'],
+                    [2, 'red'],
+                    [1, 'red'],
+                ];
+                break;
+            
+            case 'RB-5A':
+                order = [
+                    [3, 'black'],
+                    [4, 'black'],
+                    [0, 'black'],
+                    [1, 'red'],
+                    [2, 'red'],
+                ];
+                break;
+
+            case 'RB-5B':
+                order = [
+                    [3, 'black'],
+                    [4, 'black'],
+                    [2, 'black'],
+                    [1, 'red'],
+                    [0, 'red'],
+                ]
+                break;
+
+            case 'RB-5C':
+                order = [
+                    [1, 'black'],
+                    [0, 'black'],
+                    [4, 'black'],
+                    [3, 'red'],
+                    [2, 'red'],
+                ]
                 break;
         }
         return createTreeWithColoredOrder(order);
@@ -143,8 +212,16 @@ export const avlTypes = [
 
 export const RBTypes = [
     {
-        problem: 'RB-1A',
-        solution: 'simpleLeft',
+        problem: 'RB-3A',
+        solution: 'case3',
+    },
+    {
+        problem: 'RB-3B',
+        solution: 'case3',
+    },
+    {
+        problem: 'RB-4A',
+        solution: 'case4',
     },
 ]
 

@@ -35,7 +35,7 @@ export default class Game extends React.Component {
         // let pickedType = types[Math.floor(Math.random() * types.length)];
         // hardcode testing
         let pickedType = {
-            problem: 'RB-1A',
+            problem: 'RB-5C',
             solution: 'simpleLeft'
         }
         options = options.map((option) => {
