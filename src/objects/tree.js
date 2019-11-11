@@ -22,7 +22,7 @@ function arrOfNodes(arr) {
     return nodes;
 }
 
-function addNode(tree, node) { 
+function addNode(tree, node) {
     if (tree === null) {
         return newTree(node);
     } else if (node.value >= tree.value) {
@@ -52,31 +52,31 @@ function addArray(tree, arr) {
 export function generateTree(type) {
     let order = [1]; 
     switch (type) {       
-        case 'doubleRight':
+        case 'AVLdoubleRight':
             order = [1, 0, 3, 2, 4, 5];
             break;
         
-        case 'doubleLeft':
+        case 'AVLdoubleLeft':
             order = [4, 5, 2, 1, 3, 0];
             break;
         
-        case 'middleRightRight':
+        case 'AVLmiddleRightRight':
             order = [1, 0, 4, 5, 2, 3];
             break;
     
-        case 'middleRightLeft':
+        case 'AVLmiddleRightLeft':
             order = [1, 0, 4, 5, 3, 2];
             break;
         
-        case 'middleLeftRight':
+        case 'AVLmiddleLeftRight':
             order = [4, 5, 1, 0, 2, 3];
             break;
 
-        case 'middleLeftLeft':
+        case 'AVLmiddleLeftLeft':
             order = [4, 5, 1, 0, 3, 2];
             break;
 
-        case 'randomTest':
+        case 'AVLrandomTest':
             return randomTest();
         
         default:
@@ -87,27 +87,27 @@ export function generateTree(type) {
 
 export const avlTypes = [
     {
-        problem: 'doubleRight',
+        problem: 'AVLdoubleRight',
         solution: 'simpleRight'
     },
     {
-        problem: 'middleRightRight',
+        problem: 'AVLmiddleRightRight',
         solution: 'doubleRight'
     },
     {
-        problem: 'middleRightLeft',
+        problem: 'AVLmiddleRightLeft',
         solution: 'doubleRight'
     },
     {
-        problem: 'doubleLeft',
+        problem: 'AVLdoubleLeft',
         solution: 'simpleLeft'
     },
     {
-        problem: 'middleLeftRight',
+        problem: 'AVLmiddleLeftRight',
         solution: 'doubleLeft'
     },
     {
-        problem: 'middleLeftLeft',
+        problem: 'AVLmiddleLeftLeft',
         solution: 'doubleLeft'
     },
 ]

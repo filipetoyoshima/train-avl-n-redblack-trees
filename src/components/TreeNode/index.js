@@ -64,12 +64,14 @@ export default class TreeNode extends React.Component {
             ...styles.node,
             background: node.color,
         };
+        let newColor = node.color === 'red' ? 'black' : 'red';
         if (node.isNew) {
             nodeStyle = {
                 ...nodeStyle,
-                borderWidth: '3px',
-                borderStyle: 'dashed',
-                borderColor: 'white',
+                borderWidth: '6px',
+                borderRadius: '36px',
+                borderStyle: 'solid',
+                borderColor: newColor,
             }
         }
 

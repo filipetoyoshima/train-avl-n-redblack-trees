@@ -86,12 +86,9 @@ export default class Game extends React.Component {
                     <TreeNode tree={this.state.tree} depth={0} title={"Root"}/>
                 </div>
                 <div style={styles.right}>
-                    <h1 data-for='example'>
+                    <h1>
                         Qual é a opção correta?
                     </h1>
-                    <ReactTooltip id='example'>
-                        <p>Oi!</p>
-                    </ReactTooltip>
                     {this.state.options.map((value, id) => {
                         return (
                             <>
