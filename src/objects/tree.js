@@ -101,7 +101,51 @@ export function generateTree(type) {
     
     } else {
         switch (type) {
+            case 'RB-2A':
+                order = [
+                    [2, 'black'],
+                    [1, 'black'],
+                    [4, 'black'],
+                    [3, 'red'],
+                    [5, 'red'],
+                    [0, 'red'],
+                ]
+                break;
+
+            case 'RB-2B':
+                order = [
+                    [3, 'black'],
+                    [1, 'black'],
+                    [5, 'black'],
+                    [0, 'red'],
+                    [2, 'red'],
+                    [4, 'red'],
+                ]
+                break;
+
             case 'RB-3A':
+                order = [
+                    [1, 'black'],
+                    [0, 'black'],
+                    [3, 'black'],
+                    [2, 'red'],
+                    [4, 'red'],
+                    [5, 'red'],
+                ]
+                break;
+
+            case 'RB-3B':
+                order = [
+                    [4, 'black'],
+                    [5, 'black'],
+                    [2, 'black'],
+                    [1, 'red'],
+                    [3, 'red'],
+                    [0, 'red'],
+                ]
+                break;
+
+            case 'RB-31A':
                 order = [
                     [2, 'black'],
                     [3, 'red'],
@@ -110,7 +154,7 @@ export function generateTree(type) {
                 ];
                 break;
             
-            case 'RB-3B':
+            case 'RB-31B':
                 order = [
                     [1, 'black'],
                     [0, 'red'],
@@ -119,7 +163,7 @@ export function generateTree(type) {
                 ];
                 break;
 
-            case 'RB-4A':
+            case 'RB-45A':
                 order = [
                     [1, 'black'],
                     [4, 'black'],
@@ -129,7 +173,7 @@ export function generateTree(type) {
                 ];
                 break;
 
-            case 'RB-4B':
+            case 'RB-45B':
                 order = [
                     [1, 'black'],
                     [0, 'black'],
@@ -139,7 +183,7 @@ export function generateTree(type) {
                 ];
                 break;
 
-            case 'RB-4C':
+            case 'RB-45C':
                 order = [
                     [3, 'black'],
                     [4, 'black'],
@@ -212,6 +256,14 @@ export const avlTypes = [
 
 export const RBTypes = [
     {
+        problem: 'RB-2A',
+        solution: 'case2',
+    },
+    {
+        problem: 'RB-2B',
+        solution: 'case2',
+    },
+    {
         problem: 'RB-3A',
         solution: 'case3',
     },
@@ -220,8 +272,36 @@ export const RBTypes = [
         solution: 'case3',
     },
     {
-        problem: 'RB-4A',
-        solution: 'case4',
+        problem: 'RB-31A',
+        solution: 'case31',
+    },
+    {
+        problem: 'RB-31B',
+        solution: 'case31',
+    },
+    {
+        problem: 'RB-45A',
+        solution: 'case45',
+    },
+    {
+        problem: 'RB-45B',
+        solution: 'case45',
+    },
+    {
+        problem: 'RB-45C',
+        solution: 'case45',
+    },
+    {
+        problem: 'RB-5A',
+        solution: 'case5',
+    },
+    {
+        problem: 'RB-5B',
+        solution: 'case5',
+    },
+    {
+        problem: 'RB-5C',
+        solution: 'case5',
     },
 ]
 

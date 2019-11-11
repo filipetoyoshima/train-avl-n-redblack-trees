@@ -4,7 +4,7 @@ import styles from './style';
 
 import avlOptions from './../../assets/options/avl';
 import redBlackOptions from './../../assets/options/redBlack';
-import { generateTree, avlTypes } from './../../objects/tree';
+import { generateTree, avlTypes, RBTypes } from './../../objects/tree';
 import TreeNode from './../../components/TreeNode';
 
 import ReactTooltip from 'react-tooltip';
@@ -28,7 +28,7 @@ export default class Game extends React.Component {
                 break;
             case 'RedBlack':
                 options = redBlackOptions;
-                types = [{problem: 'RB-5C', solution: 'case5'}];
+                types = RBTypes;
                 break;
             default:
                 break;
