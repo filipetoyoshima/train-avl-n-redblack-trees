@@ -1,7 +1,7 @@
-import simpleRight from './../images/simpleRight.png'
-import simpleLeft from './../images/simpleLeft.png'
-import middleRight from './../images/middleRight.png'
-import middleLeft from './../images/middleLeft.png'
+import simpleRight from './../images/avl/simpleRight.png'
+import simpleLeft from './../images/avl/simpleLeft.png'
+import middleRight from './../images/avl/middleRight.png'
+import middleLeft from './../images/avl/middleLeft.png'
 
 const options = [
     {

@@ -2,7 +2,8 @@ import React from 'react';
 
 import styles from './style';
 
-import avlOptions from './../../assets/options/avl'
+import avlOptions from './../../assets/options/avl';
+import redBlackOptions from './../../assets/options/redBlack';
 import { generateTree, avlTypes } from './../../objects/tree';
 import TreeNode from './../../components/TreeNode';
 
@@ -26,18 +27,15 @@ export default class Game extends React.Component {
                 types = avlTypes;
                 break;
             case 'RedBlack':
-                // cry
+                options = redBlackOptions;
+                types = [{problem: 'RB-5C', solution: 'case5'}];
                 break;
             default:
                 break;
         }
         
-        // let pickedType = types[Math.floor(Math.random() * types.length)];
-        // hardcode testing
-        let pickedType = {
-            problem: 'RB-5C',
-            solution: 'simpleLeft'
-        }
+        let pickedType = types[Math.floor(Math.random() * types.length)];
+        
         options = options.map((option) => {
             return {
                 ...option,
