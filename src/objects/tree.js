@@ -12,13 +12,26 @@ export function newTree(node) {
 }
 
 function arrOfNodes(arr) {
-    let nodes = arr.map((value) => {
-        return {
-            value: value,
-            color: 'blue',
-            isNew: false,
-        }
-    })
+    let nodes = [];
+
+    if (arr[0][0] === undefined) {
+        nodes = arr.map((value) => {
+            return {
+                value: value,
+                color: 'blue',
+                isNew: false,
+            }
+        })
+    } else if (typeof arr[0][1] === 'string') {
+        nodes = arr.map((node) => {
+            return {
+                value: node[0],
+                color: node[1],
+                isNew: false,
+            }
+        })
+    }
+
     return nodes;
 }
 
@@ -50,39 +63,55 @@ function addArray(tree, arr) {
 }
 
 export function generateTree(type) {
-    let order = [1]; 
-    switch (type) {       
-        case 'AVLdoubleRight':
-            order = [1, 0, 3, 2, 4, 5];
-            break;
+    let order = [1];
+
+    if (type.substring(0, 3) === 'AVL') {
+        switch (type) {       
+            case 'AVLdoubleRight':
+                order = [1, 0, 3, 2, 4, 5];
+                break;
+            
+            case 'AVLdoubleLeft':
+                order = [4, 5, 2, 1, 3, 0];
+                break;
+            
+            case 'AVLmiddleRightRight':
+                order = [1, 0, 4, 5, 2, 3];
+                break;
         
-        case 'AVLdoubleLeft':
-            order = [4, 5, 2, 1, 3, 0];
-            break;
-        
-        case 'AVLmiddleRightRight':
-            order = [1, 0, 4, 5, 2, 3];
-            break;
+            case 'AVLmiddleRightLeft':
+                order = [1, 0, 4, 5, 3, 2];
+                break;
+            
+            case 'AVLmiddleLeftRight':
+                order = [4, 5, 1, 0, 2, 3];
+                break;
     
-        case 'AVLmiddleRightLeft':
-            order = [1, 0, 4, 5, 3, 2];
-            break;
-        
-        case 'AVLmiddleLeftRight':
-            order = [4, 5, 1, 0, 2, 3];
-            break;
-
-        case 'AVLmiddleLeftLeft':
-            order = [4, 5, 1, 0, 3, 2];
-            break;
-
-        case 'AVLrandomTest':
-            return randomTest();
-        
-        default:
-            break;
+            case 'AVLmiddleLeftLeft':
+                order = [4, 5, 1, 0, 3, 2];
+                break;
+    
+            case 'AVLrandomTest':
+                return randomTest();
+            
+            default:
+                break;
+        }
+        return createTreeWithOrder(order);
+    
+    } else {
+        switch (type) {
+            case 'RB-1A':
+                order = [
+                    [2, 'black'],
+                    [3, 'red'],
+                    [1, 'red'],
+                    [0, 'red'],
+                ];
+                break;
+        }
+        return createTreeWithColoredOrder(order);
     }
-    return createTreeWithOrder(order);
 }
 
 export const avlTypes = [
@@ -112,6 +141,13 @@ export const avlTypes = [
     },
 ]
 
+export const RBTypes = [
+    {
+        problem: 'RB-1A',
+        solution: 'simpleLeft',
+    },
+]
+
 function generateArray(quantity) {
     let number = Math.floor(Math.random() * 10) + 1;
     let arr = [number];
@@ -125,6 +161,16 @@ function generateArray(quantity) {
 function createTreeWithOrder(order) {
     let arr = generateArray(order.length);
     arr = reorderArray(arr, order);
+    let nodes = arrOfNodes(arr);
+    let tree = addArray(null, nodes);
+    return tree;
+}
+
+function createTreeWithColoredOrder(order) {
+    let arr = generateArray(order.length);
+    let justOrder = order.map((value) => value[0]);
+    arr = reorderArray(arr, justOrder);
+    arr = arr.map((value, i) => [value, order[i][1]]);
     let nodes = arrOfNodes(arr);
     let tree = addArray(null, nodes);
     return tree;

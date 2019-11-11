@@ -32,7 +32,12 @@ export default class Game extends React.Component {
                 break;
         }
         
-        let pickedType = types[Math.floor(Math.random() * types.length)];
+        // let pickedType = types[Math.floor(Math.random() * types.length)];
+        // hardcode testing
+        let pickedType = {
+            problem: 'RB-1A',
+            solution: 'simpleLeft'
+        }
         options = options.map((option) => {
             return {
                 ...option,
